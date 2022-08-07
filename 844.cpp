@@ -15,7 +15,7 @@ class Solution {
 public:
     string getNewString(string & str){
         int cntr = 0;
-        string res = '';
+        string res = "";
         for(int i = str.size()-1; i>=0; i--){
             if(str[i] == '#'){
                 ++cntr;
