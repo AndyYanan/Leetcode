@@ -1,20 +1,22 @@
 class Solution {
 public:
     vector<vector<int>> insert(vector<vector<int>>& A, vector<int>& B) {
-        int len = A.size();
-        int idx = 0;
         vector<vector<int>> res;
-        vector<int> ins;
-        while(idx < len){
-            if(B[0]<A[i][1]){
-                ins.push_back(A[i][0]);
-            }else if(B[1]<=A[i][1]){
-                ins.push_back(A[i][0]);
-            }
-            else{
-                res.push_back(A[i]);
-            }
+        int idx = 0;
+        while((idx < A.size()) && B[0]>A[idx][1]){
+            res.push_back(A[idx]);
+            idx++;            
+        }
+        while((idx < A.size()) && B[1]>=A[idx][0]){
+            B[0] = min(B[0], A[idx][0]);
+            B[1] = max(B[1], A[idx][1]);
+            idx++;            
+        }
+        res.push_back(B);
+        while(idx < A.size()){
+            res.push_back(A[idx]);
             idx++;
         }
+        return res;
     }
 };
