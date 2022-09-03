@@ -1,11 +1,12 @@
 class Solution {
 public:
     int eraseOverlapIntervals(vector<vector<int>>& intervals) {
+        if(intervals.size() == 1) return 0;
         int cnt = 0;
         auto sort_end = [](const auto &a, const auto &b){return a[1]<b[1];};       
         sort(intervals.begin(), intervals.end(), sort_end);
         vector<int> pre = intervals[0];
-/* 
+ 
         //method 1
         for(int i = 1; i < intervals.size(); ++i){
             if(intervals[i][0]<pre[1]){
@@ -16,7 +17,7 @@ public:
         }
         return cnt;
 
-*/
+/*
        //method 2
         for(int i = 1; i < intervals.size(); ++i){
             if(pre[1] <= intervals[i][0]){
@@ -25,6 +26,9 @@ public:
             }
         }
         return intervals.size()-cnt-1;
+*/
+        
+        
 /*
         //method 3
         int cnt = 0;
