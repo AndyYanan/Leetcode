@@ -1,6 +1,17 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
+        int dic[2128] = {0};
+        int p_left = 0, res = 0;
+        for(int i = 0; i < s.size(); ++i){
+            dic[s[i]]++;
+            while(dic[s[i]] > 1){
+                dic[s[p_left++]]--;
+            }
+            res = max(res, i-p_left+1);
+        }
+        return res;
+/*
         vector<int> dic(256, -1);
         int start = -1, res = 0;
         for(int i = 0; i < s.size(); ++i){
@@ -11,7 +22,10 @@ public:
             res = max(res, i-start);
         }
         return res;
-        /*int ch[128] = {0};
+*/
+
+/*
+        int ch[128] = {0};
         int cntr = 0;
         int l = 0, r = 0;
         while(r < s.size()){
@@ -23,6 +37,6 @@ public:
             r++;
         }
         return cntr;
-        */
+*/
     }
 };
