@@ -1,7 +1,7 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        int dic[2128] = {0};
+        int dic[128] = {0};
         int p_left = 0, res = 0;
         for(int i = 0; i < s.size(); ++i){
             dic[s[i]]++;
